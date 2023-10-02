@@ -8,11 +8,14 @@ import Link from '@mui/material/Link'
 import TextField from '@mui/material/TextField'
 import { useFormik } from 'formik'
 import { useRouter } from 'next/router'
+import { useSnackbar } from 'notistack'
 import * as yup from 'yup'
 
 export default function SignIn() {
   const router = useRouter()
+  const { enqueueSnackbar } = useSnackbar()
   const handleFormSubmit = (data: typeof initialValues) => {
+    enqueueSnackbar('Đăng nhập thành công')
     localStorage.setItem('Authorization', '123')
     router.push('/').then(() => {
       router.reload()

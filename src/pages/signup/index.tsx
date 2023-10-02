@@ -12,9 +12,41 @@ import HomeIcon from '@mui/icons-material/Home'
 import LockIcon from '@mui/icons-material/Lock'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import { useSnackbar } from 'notistack'
+import { useRecoilState } from 'recoil'
+import { loadingState } from '@/atom'
+import { useRouter } from 'next/router'
+import { createUser } from '../../../package/api/user/create-user'
 export default function SignUp() {
-  const handleFormSubmit = (data: typeof initialValues) => {
-    console.log(data)
+  const [loading, setLoading] = useRecoilState(loadingState)
+  const { enqueueSnackbar } = useSnackbar()
+  const router = useRouter()
+  const handleFormSubmit = async (data: typeof initialValues) => {
+    try {
+      setLoading(true)
+      const res = await createUser({
+        address: data.address,
+        email: data.email,
+        password: data.password,
+        phoneNumber: data.phone,
+        userName: data.lastName + data.firstName,
+        userRole: 0,
+        userUid: ''
+      })
+      if (res.error) {
+        enqueueSnackbar('Đăng kí thất bại', {
+          variant: "error"
+        })
+      } else {
+        enqueueSnackbar('Đăng kí thành công', {
+          variant: "success"
+        })
+        router.push('/').then(() => {
+          router.reload()
+        })
+      }
+    } catch (error: any) {}
+    setLoading(false)
   }
   const { values, errors, handleChange, handleSubmit } = useFormik({
     initialValues,
