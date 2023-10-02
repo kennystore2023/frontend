@@ -5,7 +5,7 @@ const theme = createTheme({
   palette: {
     primary: {
       // main: '#feAFA2',
-      main: "#FF9B9B"
+      main: "#7BB11D"
       // main: '#F6F9FC', 
     },
     secondary: {
@@ -13,7 +13,7 @@ const theme = createTheme({
     }
   },
   typography: {
-    fontFamily: 'Montserrat',
+    fontFamily: 'roboto',
   },
 });
 

@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <div style={{ backgroundColor: '#F6F9FC' }}>
             <Header />
 
-            <Container maxWidth='lg' sx={{ marginTop: '100px', minHeight: "800px" }}>
+            <Container maxWidth='lg' sx={{ marginTop: '100px', minHeight: '800px', paddingTop: '2rem' }}>
               <Component {...pageProps} />
             </Container>
           </div>

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 
-import { suggest } from "../../../config/setup"; // Only import the necessary function
 import { useRouter } from "next/router";
 import { Autocomplete, TextField } from "@mui/material";
+import { suggest } from "@/config/suggest";
 
 export default function SearchBox() {
   const router = useRouter();
@@ -63,13 +63,13 @@ export default function SearchBox() {
                 backgroundColor: "white",
                 borderRadius: "1rem",
               },
-              "& .MuiOutlinedInput-notchedOutline": {
-                border: "1px solid #FF9B9B",
-                borderRadius: "1rem",
-              },
-              "&:hover .MuiOutlinedInput-notchedOutline": {
-                border: "2px solid #FF9B9B !important",
-              },
+              // "& .MuiOutlinedInput-notchedOutline": {
+              //   border: "1px solid #FF9B9B",
+              //   borderRadius: "1rem",
+              // },
+              // "&:hover .MuiOutlinedInput-notchedOutline": {
+              //   border: "2px solid #FF9B9B !important",
+              // },
               width: "100%",
             }}
           />
